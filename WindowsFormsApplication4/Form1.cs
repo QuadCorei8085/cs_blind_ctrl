@@ -138,24 +138,24 @@ namespace WindowsFormsApplication4
                     Byte[] data = udp_client.Receive(ref listenEndPoint);
                     String message = Encoding.ASCII.GetString(data);
 
-                    string[] msg_split = message.Replace("\n","").Replace("\"","").Replace("{","").Replace("}","").Split(',');
+                    string[] msg_split = message.Replace("\n","").Replace("\"","").Replace("{","").Replace("}","").Replace(" ", "").Split(',');
 
-                    string msgType = msg_split[0].Split(':')[1].Replace(" ", "");
-                    string mac = msg_split[1].Split(':')[1].Replace(" ", "");
-                    string deviceType = msg_split[2].Split(':')[1].Replace(" ", "");
-                    string msgID = msg_split[3].Split(':')[1].Replace(" ", "");
+                    string msgType = msg_split[0].Split(':')[1];
+                    string mac = msg_split[1].Split(':')[1];
+                    string deviceType = msg_split[2].Split(':')[1];
+                    string msgID = msg_split[3].Split(':')[1];
 
                     if (string.Equals(msgType, "WriteDeviceAck") || string.Equals(msgType, "Report") || string.Equals(msgType, "ReadDeviceAck"))
                     {
-                        //int type = Int32.Parse(msg_split[4].Split(':')[1].Replace(" ", ""));
-                        //int operation = Int32.Parse(msg_split[5].Split(':')[1].Replace(" ", ""));
-                        int currentPosition = Int32.Parse(msg_split[6].Split(':')[1].Replace(" ", ""));
-                        //int currentAngle = Int32.Parse(msg_split[7].Split(':')[1].Replace(" ", ""));
-                        //int currentState = Int32.Parse(msg_split[8].Split(':')[1].Replace(" ", ""));
-                        //int voltageMode = Int32.Parse(msg_split[9].Split(':')[1].Replace(" ", ""));
-                        //int batteryLevel = Int32.Parse(msg_split[10].Split(':')[1].Replace(" ", ""));
-                        //int wirelessMode = Int32.Parse(msg_split[11].Split(':')[1].Replace(" ", ""));
-                        //int rssi = Int32.Parse(msg_split[12].Split(':')[1].Replace(" ", ""));
+                        //int type = Int32.Parse(msg_split[4].Split(':')[1]);
+                        //int operation = Int32.Parse(msg_split[5].Split(':')[1]);
+                        int currentPosition = Int32.Parse(msg_split[6].Split(':')[1]);
+                        //int currentAngle = Int32.Parse(msg_split[7].Split(':')[1]);
+                        //int currentState = Int32.Parse(msg_split[8].Split(':')[1]);
+                        //int voltageMode = Int32.Parse(msg_split[9].Split(':')[1]);
+                        //int batteryLevel = Int32.Parse(msg_split[10].Split(':')[1]);
+                        //int wirelessMode = Int32.Parse(msg_split[11].Split(':')[1]);
+                        //int rssi = Int32.Parse(msg_split[12].Split(':')[1]);
 
                         UpdatePosition(mac, currentPosition);
                     }
