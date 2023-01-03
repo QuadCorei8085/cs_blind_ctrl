@@ -11,7 +11,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Diagnostics;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Security.Cryptography;
+using System.Timers;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 // https://learn.microsoft.com/en-us/dotnet/framework/network-programming/using-udp-services
 
@@ -37,6 +39,17 @@ namespace WindowsFormsApplication4
         private String redony_mac_gyszoba_ablak = "246f28257cc8000d";
         private String redony_mac_gyszoba_ajto = "246f28257cc8000b";
 
+        private String[] redony_mac_arr = { "246f28257cc8000e",
+                                            "246f28257cc80005",
+                                            "246f28257cc80007",
+                                            "246f28257cc80009",
+                                            "246f28257cc8000c",
+                                            "246f28257cc8000f",
+                                            "246f28257cc80001",
+                                            "246f28257cc80010",
+                                            "246f28257cc8000d",
+                                            "246f28257cc8000b" };
+
         private String operation_down = "0";
         private String operation_up = "1";
         private String operation_stop = "2";
@@ -45,6 +58,9 @@ namespace WindowsFormsApplication4
         private String bridge_access_token = "\"AccessToken\":\"AEB7ACBCD21AB55F787C9559F0E7F084\"";
         private String brigde_radio_type = "\"deviceType\":\"10000000\""; // 433mhz radio
 
+        private System.Timers.Timer periodicTimer;
+        private int timerPeriod = 200; // ms
+        private int timer_i;
 
         public Form1()
         {
@@ -57,6 +73,25 @@ namespace WindowsFormsApplication4
             udp_listen_thread_running = true;
             udp_listen_thread = new Thread(new ThreadStart(UdpReceiver));
             udp_listen_thread.Start();
+
+            StartPeriodicTimer();
+        }
+
+        private void StartPeriodicTimer()
+        {
+            // Create a timer with a two second interval.
+            periodicTimer = new System.Timers.Timer(timerPeriod);
+            // Hook up the Elapsed event for the timer. 
+            periodicTimer.Elapsed += OnTimedEvent;
+            periodicTimer.AutoReset = true;
+            periodicTimer.Enabled = true;
+        }
+
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            timer_i = (timer_i + 1) % redony_mac_arr.Length;
+
+            read_device(redony_mac_arr[timer_i]);
         }
 
         public void textBox_setText(System.Windows.Forms.TextBox textbox, String txt)
@@ -69,6 +104,22 @@ namespace WindowsFormsApplication4
             textbox.Text = txt;
         }
 
+        public void UpdatePosition(String mac, int position)
+        {
+            if (string.Equals(mac, redony_mac_halo_ablak))
+            {
+                textBox_setText(textBox_halo_ablak, position.ToString());
+            }
+            else if (string.Equals(mac, redony_mac_halo_ajto))
+            {
+                textBox_setText(textBox_halo_ajto, position.ToString());
+            }
+            // tovabbi else if string Equal...
+            else
+            {
+
+            }
+        }
 
         void SendUdp(string command)
         {
@@ -91,17 +142,22 @@ namespace WindowsFormsApplication4
 
                     string msgType = msg_split[0].Split(':')[1];
                     string mac = msg_split[1].Split(':')[1].Replace(" ", "");
-                    int operation = Int32.Parse(msg_split[4].Split(':')[1].Replace(" ", ""));
-                    int currentPosition = Int32.Parse(msg_split[5].Split(':')[1].Replace(" ", ""));
-                    int currentAngle = Int32.Parse(msg_split[6].Split(':')[1].Replace(" ", ""));
+                    string deviceType = msg_split[2].Split(':')[1].Replace(" ", "");
+                    string msgID = msg_split[3].Split(':')[1].Replace(" ", "");
 
-                    if(string.Equals(mac, redony_mac_halo_ablak))
+                    if (string.Equals(msgType, "WriteDeviceAck") || string.Equals(msgType, "Report") || string.Equals(msgType, "ReadDeviceAck"))
                     {
-                        textBox_setText(textBox_halo_ablak, currentPosition.ToString());
-                    }
-                    else if (string.Equals(mac, redony_mac_halo_ajto))
-                    {
-                        textBox_setText(textBox_halo_ajto, currentPosition.ToString());
+                        //int type = Int32.Parse(msg_split[4].Split(':')[1].Replace(" ", ""));
+                        //int operation = Int32.Parse(msg_split[5].Split(':')[1].Replace(" ", ""));
+                        int currentPosition = Int32.Parse(msg_split[6].Split(':')[1].Replace(" ", ""));
+                        //int currentAngle = Int32.Parse(msg_split[7].Split(':')[1].Replace(" ", ""));
+                        //int currentState = Int32.Parse(msg_split[8].Split(':')[1].Replace(" ", ""));
+                        //int voltageMode = Int32.Parse(msg_split[9].Split(':')[1].Replace(" ", ""));
+                        //int batteryLevel = Int32.Parse(msg_split[10].Split(':')[1].Replace(" ", ""));
+                        //int wirelessMode = Int32.Parse(msg_split[11].Split(':')[1].Replace(" ", ""));
+                        //int rssi = Int32.Parse(msg_split[12].Split(':')[1].Replace(" ", ""));
+
+                        UpdatePosition(mac, currentPosition);
                     }
                     else
                     {
@@ -126,7 +182,14 @@ namespace WindowsFormsApplication4
         private void write_device(String mac, String operation)
         {
             String dateplustime = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            String command = "{\"msgType\":\"WriteDevice\",\"mac\":" + mac + "," + brigde_radio_type + "," + bridge_access_token + ",\"msgID\":" + dateplustime + ",\"data\":{\"operation\":" + operation + "}}";
+            String command = "{\"msgType\":\"WriteDevice\",\"mac\":\"" + mac + "\"," + brigde_radio_type + "," + bridge_access_token + ",\"msgID\":" + dateplustime + ",\"data\":{\"operation\":" + operation + "}}";
+            SendUdp(command);
+        }
+
+        private void read_device(String mac)
+        {
+            String dateplustime = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            String command = "{\"msgType\":\"ReadDevice\",\"mac\":\"" + mac + "\"," + brigde_radio_type + "," + bridge_access_token + ",\"msgID\":" + dateplustime + "}";
             SendUdp(command);
         }
 
