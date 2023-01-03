@@ -140,7 +140,7 @@ namespace WindowsFormsApplication4
 
                     string[] msg_split = message.Replace("\n","").Replace("\"","").Replace("{","").Replace("}","").Split(',');
 
-                    string msgType = msg_split[0].Split(':')[1];
+                    string msgType = msg_split[0].Split(':')[1].Replace(" ", "");
                     string mac = msg_split[1].Split(':')[1].Replace(" ", "");
                     string deviceType = msg_split[2].Split(':')[1].Replace(" ", "");
                     string msgID = msg_split[3].Split(':')[1].Replace(" ", "");
