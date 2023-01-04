@@ -21,8 +21,8 @@ namespace WindowsFormsApplication4
 {
     public partial class Form1 : Form
     {
-        //private String bridge_ip = "192.168.0.11"; // fater cime
-        private String bridge_ip = "192.168.0.105";
+        private String bridge_ip = "192.168.0.11"; // fater cime
+        //private String bridge_ip = "192.168.0.104";
         private int bridge_port = 32100;
         private UdpClient udp_client;
         private Thread udp_listen_thread;
@@ -72,6 +72,7 @@ namespace WindowsFormsApplication4
 
             udp_listen_thread_running = true;
             udp_listen_thread = new Thread(new ThreadStart(UdpReceiver));
+            udp_listen_thread.IsBackground = true;
             udp_listen_thread.Start();
 
             StartPeriodicTimer();
@@ -98,7 +99,15 @@ namespace WindowsFormsApplication4
         {
             if (InvokeRequired)
             {
-                this.Invoke((MethodInvoker)delegate () { textBox_setText(textbox, txt); });
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate () { textBox_setText(textbox, txt); });
+                }
+                catch (Exception ex)
+                {
+
+                }
+
                 return;
             }
             textbox.Text = txt;
