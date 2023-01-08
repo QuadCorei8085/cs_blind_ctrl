@@ -39,6 +39,11 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox_nappali_ablak_bal = new System.Windows.Forms.TextBox();
+            this.textBox_nappali_ablak_kozep = new System.Windows.Forms.TextBox();
+            this.textBox_nappali_ablak_jobb = new System.Windows.Forms.TextBox();
+            this.textBox_nappali_ajto_nagy = new System.Windows.Forms.TextBox();
+            this.textBox_nappali_ajto_kicsi = new System.Windows.Forms.TextBox();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -51,6 +56,8 @@
             this.button10 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox_halo_ablak = new System.Windows.Forms.TextBox();
+            this.textBox_halo_ajto = new System.Windows.Forms.TextBox();
             this.button38 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
@@ -63,11 +70,13 @@
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_emelet_feljaro = new System.Windows.Forms.TextBox();
             this.button29 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox_gyszoba_ajto = new System.Windows.Forms.TextBox();
+            this.textBox_gyszoba_ablak = new System.Windows.Forms.TextBox();
             this.button39 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
@@ -79,8 +88,6 @@
             this.button35 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
-            this.textBox_halo_ajto = new System.Windows.Forms.TextBox();
-            this.textBox_halo_ablak = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -185,6 +192,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox_nappali_ablak_bal);
+            this.groupBox1.Controls.Add(this.textBox_nappali_ablak_kozep);
+            this.groupBox1.Controls.Add(this.textBox_nappali_ablak_jobb);
+            this.groupBox1.Controls.Add(this.textBox_nappali_ajto_nagy);
+            this.groupBox1.Controls.Add(this.textBox_nappali_ajto_kicsi);
             this.groupBox1.Controls.Add(this.button18);
             this.groupBox1.Controls.Add(this.button17);
             this.groupBox1.Controls.Add(this.button16);
@@ -196,6 +208,46 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nappali";
+            // 
+            // textBox_nappali_ablak_bal
+            // 
+            this.textBox_nappali_ablak_bal.Location = new System.Drawing.Point(12, 162);
+            this.textBox_nappali_ablak_bal.Name = "textBox_nappali_ablak_bal";
+            this.textBox_nappali_ablak_bal.Size = new System.Drawing.Size(39, 20);
+            this.textBox_nappali_ablak_bal.TabIndex = 22;
+            this.textBox_nappali_ablak_bal.Text = "0";
+            // 
+            // textBox_nappali_ablak_kozep
+            // 
+            this.textBox_nappali_ablak_kozep.Location = new System.Drawing.Point(66, 162);
+            this.textBox_nappali_ablak_kozep.Name = "textBox_nappali_ablak_kozep";
+            this.textBox_nappali_ablak_kozep.Size = new System.Drawing.Size(39, 20);
+            this.textBox_nappali_ablak_kozep.TabIndex = 21;
+            this.textBox_nappali_ablak_kozep.Text = "0";
+            // 
+            // textBox_nappali_ablak_jobb
+            // 
+            this.textBox_nappali_ablak_jobb.Location = new System.Drawing.Point(121, 162);
+            this.textBox_nappali_ablak_jobb.Name = "textBox_nappali_ablak_jobb";
+            this.textBox_nappali_ablak_jobb.Size = new System.Drawing.Size(39, 20);
+            this.textBox_nappali_ablak_jobb.TabIndex = 20;
+            this.textBox_nappali_ablak_jobb.Text = "0";
+            // 
+            // textBox_nappali_ajto_nagy
+            // 
+            this.textBox_nappali_ajto_nagy.Location = new System.Drawing.Point(185, 162);
+            this.textBox_nappali_ajto_nagy.Name = "textBox_nappali_ajto_nagy";
+            this.textBox_nappali_ajto_nagy.Size = new System.Drawing.Size(74, 20);
+            this.textBox_nappali_ajto_nagy.TabIndex = 19;
+            this.textBox_nappali_ajto_nagy.Text = "0";
+            // 
+            // textBox_nappali_ajto_kicsi
+            // 
+            this.textBox_nappali_ajto_kicsi.Location = new System.Drawing.Point(272, 162);
+            this.textBox_nappali_ajto_kicsi.Name = "textBox_nappali_ajto_kicsi";
+            this.textBox_nappali_ajto_kicsi.Size = new System.Drawing.Size(47, 20);
+            this.textBox_nappali_ajto_kicsi.TabIndex = 18;
+            this.textBox_nappali_ajto_kicsi.Text = "0";
             // 
             // button18
             // 
@@ -332,10 +384,26 @@
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Location = new System.Drawing.Point(577, 35);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(200, 309);
+            this.groupBox4.Size = new System.Drawing.Size(200, 234);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Hálószoba";
+            // 
+            // textBox_halo_ablak
+            // 
+            this.textBox_halo_ablak.Location = new System.Drawing.Point(105, 162);
+            this.textBox_halo_ablak.Name = "textBox_halo_ablak";
+            this.textBox_halo_ablak.Size = new System.Drawing.Size(83, 20);
+            this.textBox_halo_ablak.TabIndex = 18;
+            this.textBox_halo_ablak.Text = "0";
+            // 
+            // textBox_halo_ajto
+            // 
+            this.textBox_halo_ajto.Location = new System.Drawing.Point(12, 162);
+            this.textBox_halo_ajto.Name = "textBox_halo_ajto";
+            this.textBox_halo_ajto.Size = new System.Drawing.Size(81, 20);
+            this.textBox_halo_ajto.TabIndex = 17;
+            this.textBox_halo_ajto.Text = "0";
             // 
             // button38
             // 
@@ -453,7 +521,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.label1);
+            this.groupBox7.Controls.Add(this.textBox_emelet_feljaro);
             this.groupBox7.Controls.Add(this.button29);
             this.groupBox7.Controls.Add(this.button28);
             this.groupBox7.Controls.Add(this.button27);
@@ -464,14 +532,13 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Feljáró";
             // 
-            // label1
+            // textBox_emelet_feljaro
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 169);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "label1";
+            this.textBox_emelet_feljaro.Location = new System.Drawing.Point(6, 162);
+            this.textBox_emelet_feljaro.Name = "textBox_emelet_feljaro";
+            this.textBox_emelet_feljaro.Size = new System.Drawing.Size(77, 20);
+            this.textBox_emelet_feljaro.TabIndex = 19;
+            this.textBox_emelet_feljaro.Text = "0";
             // 
             // button29
             // 
@@ -505,6 +572,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.textBox_gyszoba_ajto);
+            this.groupBox8.Controls.Add(this.textBox_gyszoba_ablak);
             this.groupBox8.Controls.Add(this.button39);
             this.groupBox8.Controls.Add(this.button30);
             this.groupBox8.Controls.Add(this.button31);
@@ -516,6 +585,22 @@
             this.groupBox8.TabIndex = 19;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Babaszoba";
+            // 
+            // textBox_gyszoba_ajto
+            // 
+            this.textBox_gyszoba_ajto.Location = new System.Drawing.Point(12, 162);
+            this.textBox_gyszoba_ajto.Name = "textBox_gyszoba_ajto";
+            this.textBox_gyszoba_ajto.Size = new System.Drawing.Size(81, 20);
+            this.textBox_gyszoba_ajto.TabIndex = 22;
+            this.textBox_gyszoba_ajto.Text = "0";
+            // 
+            // textBox_gyszoba_ablak
+            // 
+            this.textBox_gyszoba_ablak.Location = new System.Drawing.Point(111, 162);
+            this.textBox_gyszoba_ablak.Name = "textBox_gyszoba_ablak";
+            this.textBox_gyszoba_ablak.Size = new System.Drawing.Size(77, 20);
+            this.textBox_gyszoba_ablak.TabIndex = 21;
+            this.textBox_gyszoba_ablak.Text = "0";
             // 
             // button39
             // 
@@ -631,35 +716,20 @@
             this.button37.UseVisualStyleBackColor = true;
             this.button37.Click += new System.EventHandler(this.button37_Click);
             // 
-            // textBox_halo_ajto
-            // 
-            this.textBox_halo_ajto.Location = new System.Drawing.Point(12, 149);
-            this.textBox_halo_ajto.Name = "textBox_halo_ajto";
-            this.textBox_halo_ajto.Size = new System.Drawing.Size(81, 20);
-            this.textBox_halo_ajto.TabIndex = 17;
-            this.textBox_halo_ajto.Text = "0";
-            // 
-            // textBox_halo_ablak
-            // 
-            this.textBox_halo_ablak.Location = new System.Drawing.Point(105, 148);
-            this.textBox_halo_ablak.Name = "textBox_halo_ablak";
-            this.textBox_halo_ablak.Size = new System.Drawing.Size(81, 20);
-            this.textBox_halo_ablak.TabIndex = 18;
-            this.textBox_halo_ablak.Text = "0";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 381);
+            this.ClientSize = new System.Drawing.Size(917, 293);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Redőnymozgató_V1.1";
+            this.Text = "Redőnymozgató_V1.3";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -669,6 +739,7 @@
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -724,11 +795,18 @@
         private System.Windows.Forms.Button button35;
         private System.Windows.Forms.Button button36;
         private System.Windows.Forms.Button button37;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.TextBox textBox_halo_ajto;
         private System.Windows.Forms.TextBox textBox_halo_ablak;
+        private System.Windows.Forms.TextBox textBox_nappali_ablak_bal;
+        private System.Windows.Forms.TextBox textBox_nappali_ablak_kozep;
+        private System.Windows.Forms.TextBox textBox_nappali_ablak_jobb;
+        private System.Windows.Forms.TextBox textBox_nappali_ajto_nagy;
+        private System.Windows.Forms.TextBox textBox_nappali_ajto_kicsi;
+        private System.Windows.Forms.TextBox textBox_emelet_feljaro;
+        private System.Windows.Forms.TextBox textBox_gyszoba_ajto;
+        private System.Windows.Forms.TextBox textBox_gyszoba_ablak;
     }
 }
 

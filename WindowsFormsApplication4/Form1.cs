@@ -13,6 +13,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Timers;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 // https://learn.microsoft.com/en-us/dotnet/framework/network-programming/using-udp-services
@@ -123,10 +124,40 @@ namespace WindowsFormsApplication4
             {
                 textBox_setText(textBox_halo_ajto, position.ToString());
             }
-            // tovabbi else if string Equal...
+            else if (string.Equals(mac, redony_mac_nappali_ajto_kicsi))
+            {
+                textBox_setText(textBox_nappali_ajto_kicsi, position.ToString());
+            }
+            else if (string.Equals(mac, redony_mac_nappali_ajto_nagy))
+            {
+                textBox_setText(textBox_nappali_ajto_nagy, position.ToString());
+            }
+            else if (string.Equals(mac, redony_mac_nappali_ablak_jobb))
+            {
+                textBox_setText(textBox_nappali_ablak_jobb, position.ToString());
+            }
+            else if (string.Equals(mac, redony_mac_nappali_ablak_kozep))
+            {
+                textBox_setText(textBox_nappali_ablak_kozep, position.ToString());
+            }
+            else if (string.Equals(mac, redony_mac_nappali_ablak_bal))
+            {
+                textBox_setText(textBox_nappali_ablak_bal, position.ToString());
+            }
+            else if (string.Equals(mac, redony_mac_gyszoba_ablak))
+            {
+                textBox_setText(textBox_gyszoba_ablak, position.ToString());
+            }
+            else if (string.Equals(mac, redony_mac_gyszoba_ajto))
+            {
+                textBox_setText(textBox_gyszoba_ajto, position.ToString());
+            }
+            else if (string.Equals(mac, redony_mac_emelet_feljaro))
+            {
+                textBox_setText(textBox_emelet_feljaro, position.ToString());
+            }
             else
             {
-
             }
         }
 
